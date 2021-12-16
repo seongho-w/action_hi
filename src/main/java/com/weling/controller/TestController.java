@@ -16,4 +16,10 @@ public class TestController {
         return testStr;
     }
 
+    @GetMapping("/signup")
+    public String signup(){
+        return "hi";
+
+    }
+
 }
