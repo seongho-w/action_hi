@@ -1,7 +1,7 @@
 package com.weling.security;
 
-import com.weling.action_codedeploy.domain.User;
-import com.weling.action_codedeploy.domain.UserRole;
+import com.weling.domain.User;
+import com.weling.domain.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

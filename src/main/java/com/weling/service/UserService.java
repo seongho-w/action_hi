@@ -1,11 +1,12 @@
 package com.weling.service;
 
-import com.weling.action_codedeploy.domain.User;
-import com.weling.action_codedeploy.domain.UserRole;
-import com.weling.action_codedeploy.dto.SignupRequestDto;
-import com.weling.action_codedeploy.repository.UserRepository;
-import com.weling.action_codedeploy.security.kakao.KakaoOAuth2;
-import com.weling.action_codedeploy.security.kakao.KakaoUserInfo;
+
+import com.weling.domain.User;
+import com.weling.domain.UserRole;
+import com.weling.dto.SignupRequestDto;
+import com.weling.repository.UserRepository;
+import com.weling.security.kakao.KakaoOAuth2;
+import com.weling.security.kakao.KakaoUserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

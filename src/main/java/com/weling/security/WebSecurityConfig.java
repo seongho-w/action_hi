@@ -1,8 +1,7 @@
 package com.weling.security;
 
-
-import com.weling.action_codedeploy.controller.JwtAuthenticationEntryPoint;
-import com.weling.action_codedeploy.controller.JwtAuthenticationFilter;
+import com.weling.controller.JwtAuthenticationEntryPoint;
+import com.weling.controller.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

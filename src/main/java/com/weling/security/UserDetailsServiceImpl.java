@@ -1,8 +1,8 @@
 package com.weling.security;
 
 
-import com.weling.action_codedeploy.domain.User;
-import com.weling.action_codedeploy.repository.UserRepository;
+import com.weling.domain.User;
+import com.weling.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
