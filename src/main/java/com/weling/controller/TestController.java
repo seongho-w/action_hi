@@ -29,9 +29,6 @@ public class TestController {
     private final UserDetailsService userDetailsService;
     private final UserService userService;
 
-    private final ArticleService articleService;
-    private final ModelMapper modelMapper;
-
     @GetMapping("/test")
     public String test(){
         String testStr = "Hi~~";
@@ -49,22 +46,6 @@ public class TestController {
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token, userDetails.getUsername()));
     }
-
-    @PostMapping("/article")
-    public Article setArticle(PostArticleDto.Request request) throws IOException {
-        return articleService.setArticle(request);
-    }
-
-    @GetMapping("/articles")
-    public List<GetArticlesDto.Response> getArticles(){
-        int i = 1/0;
-        List<Article> articles = articleService.getArticles();
-        List<GetArticlesDto.Response> response = modelMapper.map(articles, new TypeToken<List<GetArticlesDto.Response>>() {}.getType());
-        return response;
-    }
-
-
-
 
     private void authenticate(String username, String password) throws Exception {
         try {
