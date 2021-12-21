@@ -16,6 +16,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 
 @CrossOrigin(origins = "https://www.weling.site/")
 @RequiredArgsConstructor
@@ -26,6 +28,9 @@ public class TestController {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final UserService userService;
+
+    private final ArticleService articleService;
+    private final ModelMapper modelMapper;
 
     @GetMapping("/test")
     public String test(){
@@ -45,6 +50,22 @@ public class TestController {
         return ResponseEntity.ok(new JwtResponse(token, userDetails.getUsername()));
     }
 
+    @PostMapping("/article")
+    public Article setArticle(PostArticleDto.Request request) throws IOException {
+        return articleService.setArticle(request);
+    }
+
+    @GetMapping("/articles")
+    public List<GetArticlesDto.Response> getArticles(){
+        int i = 1/0;
+        List<Article> articles = articleService.getArticles();
+        List<GetArticlesDto.Response> response = modelMapper.map(articles, new TypeToken<List<GetArticlesDto.Response>>() {}.getType());
+        return response;
+    }
+
+
+
+
     private void authenticate(String username, String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
@@ -54,5 +75,7 @@ public class TestController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
+
+
 
 }
