@@ -24,10 +24,10 @@ import java.io.IOException;
 @RestController
 public class TestController {
 
-    private final JwtTokenUtil jwtTokenUtil;
-    private final AuthenticationManager authenticationManager;
-    private final UserDetailsService userDetailsService;
-    private final UserService userService;
+//    private final JwtTokenUtil jwtTokenUtil;
+//    private final AuthenticationManager authenticationManager;
+//    private final UserDetailsService userDetailsService;
+//    private final UserService userService;
 
     @GetMapping("/test")
     public String test(){
@@ -37,25 +37,25 @@ public class TestController {
         return testStr;
     }
 
-    @PostMapping(value = "/signup")
-    public ResponseEntity<?> createUser(@RequestBody SignupRequestDto userDto) throws Exception {
-        System.out.println("회원가입");
-        userService.registerUser(userDto);
-        authenticate(userDto.getUsername(), userDto.getPassword());
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(userDto.getUsername());
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new JwtResponse(token, userDetails.getUsername()));
-    }
-
-    private void authenticate(String username, String password) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
-        } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
-        }
-    }
+//    @PostMapping(value = "/signup")
+//    public ResponseEntity<?> createUser(@RequestBody SignupRequestDto userDto) throws Exception {
+//        System.out.println("회원가입");
+//        userService.registerUser(userDto);
+//        authenticate(userDto.getUsername(), userDto.getPassword());
+//        final UserDetails userDetails = userDetailsService.loadUserByUsername(userDto.getUsername());
+//        final String token = jwtTokenUtil.generateToken(userDetails);
+//        return ResponseEntity.ok(new JwtResponse(token, userDetails.getUsername()));
+//    }
+//
+//    private void authenticate(String username, String password) throws Exception {
+//        try {
+//            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+//        } catch (DisabledException e) {
+//            throw new Exception("USER_DISABLED", e);
+//        } catch (BadCredentialsException e) {
+//            throw new Exception("INVALID_CREDENTIALS", e);
+//        }
+//    }
 
 
 
